@@ -20,15 +20,32 @@
     </header>
     <main>
         <section id="event-details">
-            <!-- Event details will be displayed here -->
+            <h2>Event Title</h2>
+            <div class="event-image">
+                <img src="images/event3.jpg" alt="Event Image">
+            </div>
+            <div class="details">
+                <p><strong>Date:</strong> March 25, 2024</p>
+                <p><strong>Time:</strong> 7:00 PM</p>
+                <p><strong>Location:</strong> Cultural Center</p>
+                <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <!-- Additional event details -->
+            </div>
         </section>
         <section id="comments">
             <h2>Comments</h2>
             <!-- Comments will be displayed here -->
+            <!-- Each comment can be structured as a div with appropriate styling -->
         </section>
         <section id="comment-form">
             <h2>Add Your Comment</h2>
-            <!-- Comment form will be displayed here -->
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="comment">Comment:</label>
+                <textarea id="comment" name="comment" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
         </section>
     </main>
     <footer>
