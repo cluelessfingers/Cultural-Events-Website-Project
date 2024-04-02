@@ -4,33 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cultural Events - Event Details</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Event Details</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Cultural Events</h1>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         <section id="event-details">
-            <h2>Event Title</h2>
-            <div class="event-image">
-                <img src="images/event3.jpg" alt="Event Image">
-            </div>
-            <div class="details">
-                <p><strong>Date:</strong> March 25, 2024</p>
-                <p><strong>Time:</strong> 7:00 PM</p>
-                <p><strong>Location:</strong> Cultural Center</p>
-                <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <!-- Additional event details -->
-            </div>
+            <!-- Event details will be displayed here -->
         </section>
         <section id="comments">
             <h2>Comments</h2>
@@ -48,8 +40,10 @@
             </form>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Cultural Events</p>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Cultural Events</p>
+        </div>
     </footer>
     <script src="js/script.js"></script>
 </body>
