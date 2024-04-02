@@ -3,40 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cultural Events - Events</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Events</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+        
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .search-container input[type="text"] {
+        margin-right: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .search-container button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .search-container button:hover {
+        background-color: #45a049;
+    }
+
+    
+    .event {
+        background-color: #f9f9f919;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px;
+    width: calc(50% - 20px); 
+    margin-right: 20px; 
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    }
+    .event:nth-child(2n) {
+    margin-right: 0; 
+}
+
+@media (max-width: 768px) {
+    .event {
+        width: 100%; 
+        margin-right: 0; 
+    }
+}
+    .events-container {
+        display: flex;
+         flex-wrap: wrap;  
+ 
+}
+
+
+.event:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.1);
+}
+
+
+
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Cultural Events</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <header class = "header">
+        <div class="container">
+            <h1 class="logo">Cultural Events</h1>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <section id="upcoming-events">
-            <h2>Upcoming Events</h2>
-            <div class="event">
-                <img src="images/event2.jpg" alt="Event 2">
-                <div class="event-info">
-                    <h3>Event 2 Title</h3>
-                    <p>Date: April 10, 2024</p>
-                    <p>Location: Art Museum</p>
-                    <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="event_details.html">More Details</a>
-                </div>
-            </div>
-            <!-- Add more upcoming events here -->
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Cultural Events</p>
+
+    <div class="container">
+        <h1>Upcoming Events</h1>
+        <form id="searchForm" class="search-container">
+            <input type="text" id="searchTerm" placeholder="Search(date,location,type...)">
+            <button type="submit">Search</button>
+        </form>
+        <div class="events-container" id="eventsContainer">
+            
+        </div>
+        
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Cultural Events</p>
+        </div>
     </footer>
-    <script src="js/script.js"></script>
+    <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const events = [
+                {
+                    name: "Bosphorus Boat Tour: Sunset Cruise",
+                    date: "Saturday, March 25th, 2024, 10:00 AM - 2:00 PM",
+                    location: "Istanbul Archaeology Museums, Sultanahmet Square, Istanbul",
+                    type: "Museum",
+                    description: "Explore the rich history of ancient civilizations with our newest exhibition featuring rare artifacts and treasures from around the world.",
+                    imageUrl: "https://muze.gen.tr/images/istanbul_archaeology_museum.jpg",
+                    Url: "event1.html"
+                },
+                {
+                    name: "Artifacts Unveiled: A Journey Through Ancient Civilizations",
+                    date: "Sunday, April 5th, 2024, 4:00 PM - 7:00 PM",
+                    location: "Kabataş Dock, Istanbul",
+                    type: "Sightseeing",
+                    description: "Enjoy breathtaking views of Istanbul's skyline and iconic landmarks on a relaxing sunset cruise along the Bosphorus",
+                    imageUrl: "https://cdn1.ntv.com.tr/gorsel/DDcRyAkqrUiD86Haat5QVQ.jpg?width=600&height=450&mode=crop&scale=both&v=20190208075705280",
+                    Url: "event2.html"
+                },
+                {
+                    name: "Istanbul Jazz Festival: Night of Smooth Jazz",
+                    date: "Friday, May 10th, 2024, 8:00 PM - 11:00 PM",
+                    location: "Harbiye Cemil Topuzlu Open-Air Theater, Istanbul",
+                    type: "Music",
+                    description: "Immerse yourself in the soulful melodies of jazz with an evening of smooth tunes performed by talented musicians from around the world.</p>",
+                    imageUrl: "https://trthaberstatic.cdn.wp.trt.com.tr/resimler/454000/455128.jpg",
+                    Url: "event3.html"
+                },
+                {
+                    name: "Ankara Jazz Festival: Smooth Jazz Night",
+                    date: "Saturday, June 15th, 2024, 7:00 PM - 10:00 PM",
+                    location: "Ankara Jazz Club, Kızılay Square, Ankara",
+                    type: "Music",
+                    description: "Immerse yourself in the soulful melodies of jazz with an evening of smooth tunes performed by talented musicians from around the world.",
+                    imageUrl: "https://i.ytimg.com/vi/G8gwYQqnNSc/maxresdefault.jpg",
+                    Url: "comingsoon.html"
+                },
+                {
+                    name: "Ankara Art Exhibition: Contemporary Art Showcase",
+                    date: "Sunday, July 20th, 2024, 10:00 AM - 6:00 PM",
+                    location: "Ankara Art Gallery, Atatürk Boulevard, Ankara",
+                    type: "Art",
+                    description: "Explore the vibrant world of contemporary art with an exhibition showcasing works by local and international artists.",
+                    imageUrl: "https://www.saha.org.tr/uploads/f7d74d8c-a09d-423e-8e31-dd6968fcb4da/et2.jpg",
+                    Url: "comingsoon.html"
+                },
+                {
+                    name: "Ankara Food Festival: Culinary Delights",
+                    date: "Saturday, August 10th, 2024, 11:00 AM - 8:00 PM",
+                    location: "Kugulu Park, Tunalı Hilmi Avenue, Ankara",
+                    type: "Food & Drink",
+                    description: "Indulge your taste buds with a diverse array of culinary delights from local and international cuisines at Ankara's premier food festival.",
+                    imageUrl: "https://evisa-to-turkey.com/cdn-cgi/image/format=auto,fit=contain,width=320/images/turkey-culinary-delights.png",
+                    Url: "comingsoon.html"
+                },
+                {
+                    name: "Antalya Film Festival: International Cinema Showcase",
+                    date: "Friday, September 14th, 2024, 12:00 PM - 10:00 PM",
+                    location: "Antalya Cultural Center, Konyaaltı Avenue, Antalya",
+                    type: "Film",
+                    description: "Experience the magic of cinema with a diverse selection of international films screened at the prestigious Antalya Film Festival.",
+                    imageUrl: "https://archello.s3.eu-central-1.amazonaws.com/images/2022/08/02/nous-architecture-antalya-t--rkan-soray-cultural-center-cultural-centres-archello.1659433112.9276.jpg",
+                    Url: "comingsoon.html"
+                },
+                {
+                    name: "Antalya Music Festival: Classical Concert",
+                    date: "Saturday, October 20th, 2024, 6:00 PM - 9:00 PM",
+                    location: "Aspendos Ancient Theater, Serik, Antalya",
+                    type: "Music",
+                    description: "Enjoy an enchanting evening of classical music performed by renowned orchestras and soloists amidst the ancient ruins of Aspendos Theater.",
+                    imageUrl: "https://antalya.com.tr/Uploaded/listing/1-382/aspendos_antik_kenti_ve_oren_yeri.jpg",
+                    Url: "comingsoon.html"
+                },
+                {
+                    name: "Antalya Fashion Week: Runway Extravaganza",
+                    date: "Sunday, November 8th, 2024, 5:00 PM - 8:00 PM",
+                    location: "Antalya Expo Center, Lara Avenue, Antalya",
+                    type: "Fashion",
+                    description: "Witness the latest trends and designs from top fashion designers and brands at Antalya Fashion Week's glamorous runway showcase.",
+                    imageUrl: "https://cdn.antalya.com.tr//Uploaded/Content/new_856aebdd-5719-4387-8f80-896d96ff7467.jpg",
+                    Url: "comingsoon.html"
+                },
+                {
+                    name: "Mediterranean Food Festival: A Culinary Journey",
+                    date: "Saturday, June 22nd, 2024, 11:00 AM - 9:00 PM",
+                    location: "Mersin Marina, Mersin",
+                    type: "Food & Drink",
+                    description: "Savor the flavors of the Mediterranean with a diverse selection of dishes from Greece, Italy, Spain, and more. Indulge in fresh seafood, aromatic spices, and traditional delicacies.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9CNxNJx1VcJh3ndw7c5HUhMm4UosMZ8bfbRRiDRmQ_A&s",
+                    Url: "comingsoon.html"
+                },
+                {
+                    name: "Mersin International Film Festival: Screenings & Workshops",
+                    date: "Friday, July 5th, 2024, 1:00 PM - 10:00 PM",
+                    location: "Mersin Congress and Exhibition Center, Mersin",
+                    type: "Film",
+                    description: "Experience the magic of cinema with a diverse program of film screenings, Q&A sessions, and workshops featuring acclaimed directors, actors, and industry professionals.",
+                    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Kongre_ve_k%C3%BClt%C3%BCr_merkezi.jpg/300px-Kongre_ve_k%C3%BClt%C3%BCr_merkezi.jpg",
+                    Url: "comingsoon.html"
+                },
+                {
+                    name: "Mersin Music Festival: Sounds of the Mediterranean",
+                    date: "Saturday, August 17th, 2024, 6:00 PM - 11:00 PM",
+                    location: "Mersin Amphitheater, Mersin",
+                    type: "Music",
+                    description: "Enjoy an enchanting evening of music inspired by the rich cultural heritage of the Mediterranean region. From traditional folk tunes to contemporary compositions, immerse yourself in the melodies of the Mediterranean.",
+                    imageUrl: "https://videohive.img.customer.envatousercontent.com/f63ebd5a-4b24-4d62-bb48-bab3e4365ed6/video_preview/video_preview_0000.jpg?auto=compress%2Cformat&fit=crop&crop=top&max-h=8000&max-w=590&s=2a6a90484b2b3369e9cef6428bf05222",
+                    Url: "comingsoon.html"
+                }
+
+                
+                
+            ];
+
+            const searchForm = document.getElementById('searchForm');
+            const eventsContainer = document.getElementById('eventsContainer');
+
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault(); 
+
+                const searchTerm = document.getElementById('searchTerm').value.toLowerCase();
+                const filteredEvents = events.filter(event => {
+                    return (
+                        event.name.toLowerCase().includes(searchTerm) ||
+                        event.date.toLowerCase().includes(searchTerm) ||
+                        event.location.toLowerCase().includes(searchTerm) ||
+                        event.type.toLowerCase().includes(searchTerm) ||
+                        event.description.toLowerCase().includes(searchTerm)
+                    );
+                });
+
+                renderEvents(filteredEvents);
+            });
+
+            function renderEvents(events) {
+                eventsContainer.innerHTML = '';
+
+                if (events.length === 0) {
+                    const noResultsMessage = document.createElement('p');
+                    noResultsMessage.textContent = 'No events found.';
+                    eventsContainer.appendChild(noResultsMessage);
+                } else {
+                    events.forEach(event => {
+                        const eventCard = document.createElement('div');
+                        eventCard.classList.add('event');
+                        eventCard.innerHTML = `
+                        <img src="${event.imageUrl}" alt="Event 1" style="width: 260px; height: 150px;">
+                        <a href="${event.Url}" rel="noopener" target="_blank" class="event-card-link">
+                            <h3>${event.name}</h3>
+                            </a>
+                            <p>Date and Time: ${event.date}</p>
+                            <p>Location: ${event.location}</p>
+                            <p>Type: ${event.type}</p>
+                            <p>Description: ${event.description}</p>
+                            
+                        `
+                        eventsContainer.appendChild(eventCard);
+                    });
+                }
+            }
+
+            renderEvents(events);
+        });
+
+
+    </script>
 </body>
 </html>
