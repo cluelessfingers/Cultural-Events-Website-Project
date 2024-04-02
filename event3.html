@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Events - Event Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9c8;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        main {
+            padding: 20px 0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #581f75; 
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: #581f75;
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #3d2727;
+        }
+
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form button {
+            background-color: #3d2727;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #5d3e3e;
+        }
+
+        .comment {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .comment p {
+            margin: 0;
+        }
+
+        
+        
+        .event-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        .event-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #581f75;
+        }
+
+        .event-container img {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .event-container p {
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .event-container strong {
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Cultural Events</h1>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="event-details" style="padding-left: 20px;">
+            <div class="event-container">
+                <h2>Istanbul Jazz Festival: Night of Smooth Jazz</h2>
+                <img src="https://trthaberstatic.cdn.wp.trt.com.tr/resimler/454000/455128.jpg" alt="Event 3">
+                <p><strong>Date and Time:</strong> Friday, May 10th, 2024, 8:00 PM - 11:00 PM</p>
+                <p><strong>Location:</strong> Harbiye Cemil Topuzlu Open-Air Theater, Istanbul</p>
+                <p>The Istanbul Jazz Festival is an annual celebration of jazz music, bringing together talented musicians from around the world to enchant audiences with their soulful melodies and captivating performances. Held in the heart of Istanbul, this festival is a testament to the city's vibrant cultural scene and its deep appreciation for the art of jazz. From smooth improvisations to lively ensembles, the festival offers a diverse lineup of performances that cater to jazz enthusiasts of all tastes. Whether you're a seasoned jazz aficionado or simply looking to immerse yourself in the magic of live music, the Istanbul Jazz Festival promises an unforgettable experience filled with rhythm, harmony, and endless inspiration. Join us as we celebrate the timeless allure of jazz and create unforgettable memories under the starlit skies of Istanbul.
+
+
+
+
+
+
+                </p>
+            </div>
+        </section>
+        <section id="comments" style="padding-left: 20px;">
+            <h2>Comments</h2>
+            <div id="comment-list"></div>
+        </section>
+        <section id="comment-form" style="padding-left: 20px;">
+            <h2>Add Your Comment</h2>
+            <form id="commentForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="comment">Comment:</label>
+                <textarea id="comment" name="comment" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Cultural Events</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const commentForm = document.getElementById('commentForm');
+    const commentList = document.getElementById('comment-list');
+    const eventId = window.location.pathname.split('/').pop(); // Get the last part of the URL as the event ID
+    const eventCommentsKey = `comments_${eventId}`;
+    let comments = JSON.parse(localStorage.getItem(eventCommentsKey)) || [];
+
+    // Function to save comments to localStorage
+    function saveComments() {
+        localStorage.setItem(eventCommentsKey, JSON.stringify(comments));
+    }
+
+    // Function to render comments on the page
+    function renderComments() {
+        commentList.innerHTML = '';
+        comments.forEach(comment => {
+            const commentElement = document.createElement('div');
+            commentElement.classList.add('comment');
+            commentElement.innerHTML = `<p><strong>${comment.name}:</strong> ${comment.text}</p>`;
+            commentList.appendChild(commentElement);
+        });
+    }
+
+    renderComments(); // Render existing comments on page load
+
+    commentForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Retrieve input values
+        const name = document.getElementById('name').value;
+        const text = document.getElementById('comment').value;
+
+        // Create new comment object
+        const newComment = { name, text };
+
+        // Add new comment to comments array
+        comments.push(newComment);
+
+        // Save comments to localStorage
+        saveComments();
+
+        // Render updated comments on the page
+        renderComments();
+
+        // Clear the form inputs
+        document.getElementById('name').value = '';
+        document.getElementById('comment').value = '';
+    });
+});
+
+    </script>
+</body>
+</html>
