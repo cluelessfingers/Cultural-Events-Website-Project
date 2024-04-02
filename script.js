@@ -3,9 +3,38 @@ document.addEventListener("DOMContentLoaded", function() {
     const images = gallery.querySelectorAll('img');
     let index = 0;
 
-    setInterval(() => {
-        images[index].classList.remove('auto-scroll');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    const initGallery = () => {
+        const containerWidth = gallery.clientWidth;
+        images.forEach(img => {
+            img.style.width = `${containerWidth}px`;
+        });
+        scrollGallery(index);
+    };
+
+    const scrollGallery = (scrollIndex) => {
+        const imageWidth = images[0].clientWidth;
+        gallery.style.transform = `translateX(-${imageWidth * scrollIndex}px)`;
+    };
+
+    prevBtn.addEventListener('click', () => {
+        index = (index - 1 + images.length) % images.length;
+        scrollGallery(index);
+    });
+
+    nextBtn.addEventListener('click', () => {
         index = (index + 1) % images.length;
-        images[index].classList.add('auto-scroll');
+        scrollGallery(index);
+    });
+
+    window.addEventListener('resize', initGallery);
+
+    initGallery();
+
+    setInterval(() => {
+        index = (index + 1) % images.length;
+        scrollGallery(index);
     }, 5000);
 });
