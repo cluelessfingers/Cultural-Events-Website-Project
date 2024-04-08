@@ -156,16 +156,16 @@
         document.addEventListener('DOMContentLoaded', function() {
     const commentForm = document.getElementById('commentForm');
     const commentList = document.getElementById('comment-list');
-    const eventId = window.location.pathname.split('/').pop(); // Get the last part of the URL as the event ID
+    const eventId = window.location.pathname.split('/').pop();
     const eventCommentsKey = `comments_${eventId}`;
     let comments = JSON.parse(localStorage.getItem(eventCommentsKey)) || [];
 
-    // Function to save comments to localStorage
+    
     function saveComments() {
         localStorage.setItem(eventCommentsKey, JSON.stringify(comments));
     }
 
-    // Function to render comments on the page
+  
     function renderComments() {
         commentList.innerHTML = '';
         comments.forEach(comment => {
@@ -176,28 +176,25 @@
         });
     }
 
-    renderComments(); // Render existing comments on page load
+    renderComments();
 
     commentForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
 
-        // Retrieve input values
+     
         const name = document.getElementById('name').value;
         const text = document.getElementById('comment').value;
 
-        // Create new comment object
+       
         const newComment = { name, text };
 
-        // Add new comment to comments array
+       
         comments.push(newComment);
 
-        // Save comments to localStorage
         saveComments();
 
-        // Render updated comments on the page
         renderComments();
 
-        // Clear the form inputs
         document.getElementById('name').value = '';
         document.getElementById('comment').value = '';
     });
