@@ -6,32 +6,81 @@
     <title>Cultural Events</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Additional CSS for the carousel */
+        .home{
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(44, 39, 39);
+        }
         .event-gallery-container {
             position: relative;
-            max-width: 800px; /* Adjust the max-width as needed */
+            justify-content: center;
             margin: 0 auto;
             overflow: hidden;
         }
+         
         
-        .event-gallery {
+        .first-gallery{
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 1.5s ease-in-out;
+            
+            overflow: hidden; 
+            max-width: 100%;
+            padding-right:30px;
+            padding-left: 30px;
+            padding-bottom: 10px;
+            justify-content: center; 
+            align-items: center;
+            margin-top: 0px;
+            background-color: #581f75
         }
+        .first-gallery img{
+            width: 100%;
+            height:600px;
+            
+            border-radius: 0.5%;
+            
+        }
+        .event-gallery {
+            overflow: hidden;
+            display:flex;
+            background-color: #f9f9f939;
+            
+            padding-top: 5px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.155);
+            transition: transform 2s ease, box-shadow 0.3s ease;
+            margin-top: 10px;
+            max-width: 100%;  
+            margin-bottom: 10px;
+            justify-content: space-around;
+            align-items: center;
+    }
         
         .event-gallery img {
-            width: 100%;
-            height: auto;
+            
+            width: 300px;
+            height: 200px;
+            border-radius: 2%;
+            
+            
+        } 
+        @media (max-width: 768px) {
+        .event-gallery {
+            width: 100%; 
+            margin-right: 0; 
         }
+    }
         
         .prev-btn,
         .next-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: none;
+            border-radius: 50%;
+            background-color: rgba(246, 246, 246, 0.826);
             border: none;
-            color: white;
+            color: rgb(0, 0, 0);
             font-size: 1.5em;
             cursor: pointer;
             z-index: 1;
@@ -44,9 +93,33 @@
         .next-btn {
             right: 10px;
         }
+        .carousel-item {
+    position: relative;
+}
+.carousel-text {
+    position: absolute;
+    top: 60%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    
+    text-align: center; 
+    max-width: 100%; 
+}
+
+.carousel-text h1 {
+    margin: 0;
+}
+
+.carousel-text p {
+    margin: 5px 0 0;
+}
+
+
     </style>
 </head>
-<body>
+<body class = "home">
     <header class="header">
         <div class="container">
             <h1 class="logo">Cultural Events</h1>
@@ -61,75 +134,135 @@
         </div>
     </header>
     <main>
-        <section id="featured-events">
-            <h2>Featured Events</h2>
-            <div class="event-gallery-container">
-                <div class="event-gallery" id="event-gallery">
-                    <img src="https://media.licdn.com/dms/image/C561BAQE-51J-8KkMZg/company-background_10000/0/1584559866970/eventscom_cover?e=2147483647&v=beta&t=8NsL_HPkr3nHk4ppAg8MkUoiYPUIf082mpMvySv5C7o" alt="Event 1">
-                    <img src="https://hire4event.com/blogs/wp-content/uploads/2019/03/Top-Commercial-Events-in-India.png" alt="Event 2">
-                    <img src="https://cdn.phenompeople.com/CareerConnectResources/ACCOGLOBAL/tr_tr/desktop/assets/images/events/v-1606634478729-events_default_banner.jpg" alt="Event 3">
+        
+        
+        <section id="random-events">
+            <div class="first-gallery" id = "random-events">
+                <div class="carousel-text">
+                    <h1>Live the Experience of A LifeTime</h1>
+                    
                 </div>
-                <button class="prev-btn" id="prev-btn">&lt;</button>
-                <button class="next-btn" id="next-btn">&gt;</button>
+                <img src="https://media.licdn.com/dms/image/C561BAQE-51J-8KkMZg/company-background_10000/0/1584559866970/eventscom_cover?e=2147483647&v=beta&t=8NsL_HPkr3nHk4ppAg8MkUoiYPUIf082mpMvySv5C7o" alt="Event 1">
+                
+                <img src="https://cdn.sanity.io/images/cxgd3urn/production/cc18d6f637a5e8b4208395a79ae19a17742c3aa9-2320x1473.jpg?w=1200&h=762&fit=crop&auto=format" alt="Event 2">
+                
+                <img src="https://adm.dookinternational.com/dook/images/country/QlFkinAX1620388565.jpg" alt="Event 3">
             </div>
+            <button class="prev-btn" id="prev-btn">&lt;</button>
+            <button class="next-btn" id="next-btn">&gt;</button>
+        </section>
+        
+          
+        
             <section id="featured-events">
-                <h2>Featured Events</h2>
+                
                 <div class="event-gallery-container">
-                    <div class="event-gallery" id="featured-gallery"></div>
+                    <h2 style="color:white">Featured Events</h2>
+                    <div class="event-gallery" id="featured-gallery">
+                    </div>
                     <button class="prev-btn" id="prev-featured">&lt;</button>
                     <button class="next-btn" id="next-featured">&gt;</button>
                 </div>
             </section>
-            
-        </section>
-    </main>
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Cultural Events</p>
-        </div>
-    </footer>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 Cultural Events</p>
+            </div>
+        </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const featuredEvents = [
+                    {
+                        name: "Event 1",
+                        imageUrl: "https://muze.gen.tr/images/istanbul_archaeology_museum.jpg",
+                        url: "event1.html"
+                    },
+                    {
+                        name: "Event 2",
+                        imageUrl: "https://cdn1.ntv.com.tr/gorsel/DDcRyAkqrUiD86Haat5QVQ.jpg?width=600&height=450&mode=crop&scale=both&v=20190208075705280",
+                        url: "event2.html"
+                    },
+                    {
+                        name: "Event 3",
+                        imageUrl: "https://trthaberstatic.cdn.wp.trt.com.tr/resimler/454000/455128.jpg",
+                        url: "event3.html"
+                    },
+                    {
+                        name: "Event 4",
+                        imageUrl: "https://i.ytimg.com/vi/G8gwYQqnNSc/maxresdefault.jpg",
+                        url: "event4.html"
+                    }
+                ];
+                let index = 0;
+                const featuredGallery = document.getElementById('featured-gallery');
+                const prevFeaturedBtn = document.getElementById('prev-featured');
+                const nextFeaturedBtn = document.getElementById('next-featured');
+                
+                function renderFeaturedEvents() {
+                    featuredGallery.innerHTML = '';
+                    for (let i = index; i < index + 4; i++) {
+                        const event = featuredEvents[i % featuredEvents.length];
+                        const eventCard = document.createElement('div');
+                        eventCard.classList.add('event-card');
+                        eventCard.innerHTML = `
+                            <a href="${event.url}">
+                                <img src="${event.imageUrl}" alt="${event.name}">
+                            </a>
+                        `;
+                        featuredGallery.appendChild(eventCard);
+                    }
+                }
+                
+                function nextFeaturedEvent() {
+                    index++;
+                    renderFeaturedEvents();
+                }
     
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Fetch the first 4 events from the events page
-        const featuredEvents = [
-            {
-                name: "Event 1",
-                imageUrl: "https://example.com/image1.jpg",
-                url: "event1.html"
-            },
-            {
-                name: "Event 2",
-                imageUrl: "https://example.com/image2.jpg",
-                url: "event2.html"
-            },
-            {
-                name: "Event 3",
-                imageUrl: "https://example.com/image3.jpg",
-                url: "event3.html"
-            },
-            {
-                name: "Event 4",
-                imageUrl: "https://example.com/image4.jpg",
-                url: "event4.html"
+                function prevFeaturedEvent() {
+                    index--;
+                    if (index < 0) {
+                        index = featuredEvents.length - 1;
+                    }
+                    renderFeaturedEvents();
+                }
+    
+                prevFeaturedBtn.addEventListener('click', prevFeaturedEvent);
+                nextFeaturedBtn.addEventListener('click', nextFeaturedEvent);
+    
+                renderFeaturedEvents();
+    
+                setInterval(() => {
+                    nextFeaturedEvent();
+                }, 5000);
+            });
+
+
+            const prevButton = document.getElementById('prev-btn');
+            const nextButton = document.getElementById('next-btn');
+            const gallery = document.querySelector('.first-gallery');
+            const images = gallery.querySelectorAll('img');
+            let currentIndex = 0;
+
+            function showImage(index) {
+                images.forEach(image => image.style.display = 'none');
+                images[index].style.display = 'block';
             }
-        ];
 
-        const featuredGallery = document.getElementById('featured-gallery');
+            function showNextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            }
 
-        // Render the featured events in the carousel
-        featuredEvents.forEach(event => {
-            const eventCard = document.createElement('div');
-            eventCard.classList.add('event-card');
-            eventCard.innerHTML = `
-                <a href="${event.url}">
-                    <img src="${event.imageUrl}" alt="${event.name}">
-                </a>
-            `;
-            featuredGallery.appendChild(eventCard);
-        });
-    });
-</script>
+            function showPreviousImage() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            }
 
-</body>
-</html>
+            prevButton.addEventListener('click', showPreviousImage);
+            nextButton.addEventListener('click', showNextImage);
+
+            showImage(currentIndex);
+        </script>
+    </body>
+    </html>
